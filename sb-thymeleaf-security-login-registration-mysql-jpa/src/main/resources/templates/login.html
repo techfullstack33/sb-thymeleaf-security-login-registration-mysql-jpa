@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Login Page</title>
+
+<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+		$(".close").click(function() {
+			$(".alert").fadeOut(1000);
+		});
+	});
+</script>
+
+<style>
+.container {
+	width: 40%;
+}
+
+
+</style>
+</head>
+<body>
+
+	<!-- ---------------------------------------nav bar------------------------------------------------ -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#myNavbar">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand">Employee Login</a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="/home">Home</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!------------------------------------------messages-------------------------------------------------------- -->
+
+	<br>
+	<br>
+	<br>
+
+	<div th:if="${param.error}">
+		<div class="alert alert-danger">
+			<span>Invalid Username/Password!</span>
+			<button type="button" class="close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+	</div>
+
+
+	<!-------------------------------------------Login Form---------------------------------------------- -->
+
+	<div class="container">
+		<h4><b>Employee Login<b></h4>
+		<hr>
+		<form th:action="@{/login}" method="post">
+			<div class="form-group">
+				<label class="control-label" for="username">Email: </label> <input
+					id="username" name="username" class="form-control"
+					required="required" autofocus="autofocus" />
+			</div>
+
+			<div class="form-group">
+				<label class="control-label" for="userpassword">Password: </label> <input
+					id="userpassword" name="password" class="form-control"
+					type="password" required="required" autofocus="autofocus" />
+			</div>
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary btn btn-block">Login</button>
+			</div>
+		</form>
+	</div>
+
+</body>
+</html>
